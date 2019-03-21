@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>The Quest for Ale and Cheese Danishes</h1>
+    <a href='add_adventurer'>Add a new character to the campaign</a>
+    <ul>
+        <li>Session Summaries</li>
+        <li>
+            Characters
+            <ul>
+                {% for character in characters%}
+                <li>{{character.name}}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>Campaign Documents</li>
+    </ul>
+    <p>
+        <i>A dwarf, half-elf, wood elf, dragonborn, and tiefling walk into a bar...</i>
+    </p>
+</body>
+</html>

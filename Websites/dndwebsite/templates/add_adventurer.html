@@ -1,0 +1,44 @@
+<html>
+    <body>
+        <form method="POST">
+            <p>
+                Character name: <input type='text' name='char_name'>
+            </p>
+            <p>
+                Class: <input type='text' name='char_class'>
+            </p>
+            <p>
+                Race: <input type='text' name='char_race'>
+            </p>
+            <p>
+                Level: <input type='text' name='char_level'>
+            </p>
+            <p>
+                Max hp: <input type='text' name='char_maxhp'>
+            </p>
+            <p>
+                Strength: <input type='text' name='char_strength'>
+            </p>
+            <p>
+                Dexterity: <input type='text' name='char_dexterity'>
+            </p>
+            <p>
+                Constitution: <input type='text' name='char_constitution'>
+            </p>
+            <p>
+                Intelligence: <input type='text' name='char_intelligence'>
+            </p>
+            <p>
+                Wisdom: <input type='text' name='char_wisdom'>
+            </p>
+            <p>
+                Charisma: <input type='text' name='char_charisma'>
+            </p>
+            <input type='submit' value='Create character'>
+
+        </form>
+        <a href={{url_for('homepage')}}> 
+            <input type='submit' value='Cancel'>
+        </a>
+    </body>
+</html>

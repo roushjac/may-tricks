@@ -46,7 +46,7 @@ class Spells(Base):
     character_id = Column(Integer, ForeignKey('characters.id'))
     characters = relationship(Characters)
 
-class Featues(Base):
+class Features(Base):
     __tablename__ = 'features'
 
     name = Column(String(50), nullable = False)
@@ -58,5 +58,6 @@ class Featues(Base):
 
 # Populate PostgresQL database with tables
 # DB was created outside this script using psql through bash
-engine = create_engine('postgresql://roush:password@localhost/dnd')
-Base.metadata.create_all(engine)
+if __name__ == '__main__':
+    engine = create_engine('postgresql://roush:password@localhost/dnd')
+    Base.metadata.create_all(engine)
