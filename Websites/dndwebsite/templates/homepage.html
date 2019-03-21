@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Homepage</title>
+    <link rel='stylesheet' href="{{ url_for('static', filename='css/homepage.css') }}">
+</head>
 <body>
-    <h1>The Quest for Ale and Cheese Danishes</h1>
-    <a href='add_adventurer'>Add a new character to the campaign</a>
-    <ul>
-        <li>Session Summaries</li>
-        <li>
-            Characters
-            <ul>
-                {% for character in characters%}
-                <li>{{character.name}}</li>
-                {% endfor %}
-            </ul>
-        </li>
-        <li>Campaign Documents</li>
-    </ul>
-    <p>
-        <i>A dwarf, half-elf, wood elf, dragonborn, and tiefling walk into a bar...</i>
-    </p>
+    <header>
+        <h1>The Quest for Ale and Cheese Danishes</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href='#'>Session Summaries</a></li>
+            <li><a href='#'>Characters</a></li>
+            <li><a href='#'>Campaign Documents</li></a>
+        </ul>
+    </nav>
+    <section>
+        <p>A dwarf, half-elf, wood elf, dragonborn, and tiefling walk into a bar...</p>
+    </section>
 </body>
 </html>
