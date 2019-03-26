@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>Characters</title>
+</head>
+<body>
+    <h1>Characters</h1>
+    <br>
+    <a href='/add_adventurer'>Add a new adventurer</a>
+    <ul>
+        {% for character in characters %}
+        <li><a href=#>{{character.name}}</a> <a href=#>Edit</a> <a href=#>Delete</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

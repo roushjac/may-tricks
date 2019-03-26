@@ -10,9 +10,13 @@ Base.metadata.bind = engine
 
 @app.route('/') # Homepage
 def homepage():
+    return render_template('homepage.html')
+
+@app.route('/characters')
+def characters():
     session = sessionmaker(bind=engine)()
     all_characters = session.query(Characters).all()
-    return render_template('homepage.html', characters = all_characters)
+    return render_template('characters.html', characters = all_characters)
 
 @app.route('/add_adventurer', methods = ['GET', 'POST'])
 def add_adventurer():
