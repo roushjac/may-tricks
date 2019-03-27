@@ -3,17 +3,34 @@
 <head>
     <title>Homepage</title>
     <link rel='stylesheet' href="{{ url_for('static', filename='css/homepage.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Germania+One|Titillium+Web" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>The Quest for Ale and Cheese Danishes</h1>
     </header>
     <nav>
-        <ul>
-            <li><a href='#'>Session Summaries</a></li>
-            <li><a href='/characters'>Characters</a></li>
-            <li><a href='#'>Campaign Documents</li></a>
-        </ul>
+        <div class='dropdown'>
+            <button>Session Summaries</button>
+            <div class='dropdown-content'>
+                <a href={{ url_for('static', filename='write_ups/Act1Ses1WriteUp.docx') }} download>Session 1</a>
+                <a href={{ url_for('static', filename='write_ups/Session 2 Write up.docx') }} download>Session 2</a>
+                <a href={{ url_for('static', filename='write_ups/Session 3 Write Up.pdf') }} download>Session 3</a>
+                <a href={{ url_for('static', filename='write_ups/Session 4 Write Up.pdf') }} download>Session 4/5</a>
+                <a href={{ url_for('static', filename='write_ups/Session 7 Write Up.pdf') }} download>Session 7</a>
+            </div>
+        </div>
+        <div class='dropdown'>
+            <button>Characters</button>
+        </div>
+        <div class='dropdown'>
+            <button>Campaign Documents</button>
+            <div class='dropdown-content'>
+                <a href={{ url_for('static', filename='docs/What to do on my turn.png') }} download>What can I do on my turn?</a>
+                <a href={{ url_for('static', filename='docs/Waterdeep_cropped.jpg') }} download>Waterdeep Map</a>
+                <a href={{ url_for('static', filename='docs/Luskan_map.jpg') }} download>Luskan Map</a>
+            </div>
+        </div>
     </nav>
     <section>
         <p>A dwarf, half-elf, wood elf, dragonborn, and tiefling walk into a bar...</p>
