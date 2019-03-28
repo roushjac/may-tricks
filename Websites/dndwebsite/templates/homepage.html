@@ -11,7 +11,7 @@
     </header>
     <nav>
         <div class='dropdown'>
-            <button>Session Summaries</button>
+            <button class='dropdown-button'>Session Summaries</button>
             <div class='dropdown-content'>
                 <a href={{ url_for('static', filename='write_ups/Act1Ses1WriteUp.docx') }} download>Session 1</a>
                 <a href={{ url_for('static', filename='write_ups/Session 2 Write up.docx') }} download>Session 2</a>
@@ -21,10 +21,10 @@
             </div>
         </div>
         <div class='dropdown'>
-            <button>Characters</button>
+            <a href={{ url_for('characters') }} class='dropdown-button'>Characters</a>
         </div>
         <div class='dropdown'>
-            <button>Campaign Documents</button>
+            <button class='dropdown-button'>Campaign Documents</button>
             <div class='dropdown-content'>
                 <a href={{ url_for('static', filename='docs/What to do on my turn.png') }} download>What can I do on my turn?</a>
                 <a href={{ url_for('static', filename='docs/Waterdeep_cropped.jpg') }} download>Waterdeep Map</a>

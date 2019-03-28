@@ -23,18 +23,19 @@ nav{
     font-family: 'Titillium Web';
 }
 
-
-.dropdown button:hover{
-    background-color: rgba(223, 208, 208, 0.925);
-    color: black;
-}
-
 .dropdown{
     float: left;
     width: 20%;
 }
 
-.dropdown button{
+.dropdown a{
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    width: 86%;
+}
+
+.dropdown-button{
     font-size: 1.2em;
     border: none;
     outline: none;
@@ -45,6 +46,12 @@ nav{
     margin: 0; /* Important for vertical align on mobile phones */
     width: 100%; /* makes the button part fill the entire "dropdown" div */
 }
+
+.dropdown-button:hover{
+    background-color: rgba(223, 208, 208, 0.925);
+    color: black;
+}
+
 
 .dropdown-content{
     display: none;

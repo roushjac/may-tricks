@@ -1,15 +1,16 @@
 <html>
 <head>
     <title>Characters</title>
+    <link href={{ url_for('static', filename='css/characters.css') }} rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Germania+One|Titillium+Web" rel="stylesheet">
 </head>
 <body>
-    <h1>Characters</h1>
-    <br>
-    <a href='/add_adventurer'>Add a new adventurer</a>
-    <ul>
-        {% for character in characters %}
-        <li><a href=#>{{character.name}}</a> <a href=#>Edit</a> <a href=#>Delete</a></li>
-        {% endfor %}
-    </ul>
+    <header><h1>Characters</h1></header>
+    <div class='add_char'>
+        <a href='/add_adventurer'>Add a new adventurer</a>
+    </div>
+    <div class='chars'>
+        <img src={{ url_for('static', filename='character_pics/milthrar.jpg') }} alt='milthrar picture'>
+    </div>
 </body>
 </html>
