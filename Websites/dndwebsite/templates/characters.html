@@ -9,9 +9,11 @@
     <div class='add_char'>
         <a href='/add_adventurer'>Add a new adventurer</a>
     </div>
-    <div class='char_img_wrap'>
-        <a href=#><img src={{ url_for('static', filename='character_pics/milthrar.jpg') }} alt='milthrar picture' class='char_img'></a>
-        <a href=#><p class='img_overlay'>Milthrar</p></a>
-    </div>
+        {% for character in characters %}
+        <div class='char_img_wrap'>
+            <a href=#><img src="{{ url_for('static', filename=character.image_path) }}" class='char_img'></a>
+            <a href=#><p class='img_overlay'>{{character.name}}</p></a>
+        </div>
+        {% endfor %}
 </body>
 </html>

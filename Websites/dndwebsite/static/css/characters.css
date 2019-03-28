@@ -40,6 +40,8 @@ header{
     max-height: 30%;
     max-width: 30%;
     position: relative;
+    float: left;
+    margin: 0 1%;
 }
 
 .char_img_wrap .char_img{

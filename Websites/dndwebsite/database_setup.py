@@ -27,6 +27,8 @@ class Characters(Base):
     wisdom = Column(Integer, nullable = False)
     charisma = Column(Integer, nullable = False)
 
+    image_path = Column(String(200))
+
 class Equipment(Base):
     __tablename__ = 'equipment'
 
