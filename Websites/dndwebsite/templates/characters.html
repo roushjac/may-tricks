@@ -2,15 +2,16 @@
 <head>
     <title>Characters</title>
     <link href={{ url_for('static', filename='css/characters.css') }} rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css?family=Germania+One|Titillium+Web" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Germania+One|Titillium+Web|Noto+Serif" rel="stylesheet">
 </head>
 <body>
     <header><h1>Characters</h1></header>
     <div class='add_char'>
         <a href='/add_adventurer'>Add a new adventurer</a>
     </div>
-    <div class='chars'>
-        <img src={{ url_for('static', filename='character_pics/milthrar.jpg') }} alt='milthrar picture'>
+    <div class='char_img_wrap'>
+        <a href=#><img src={{ url_for('static', filename='character_pics/milthrar.jpg') }} alt='milthrar picture' class='char_img'></a>
+        <a href=#><p class='img_overlay'>Milthrar</p></a>
     </div>
 </body>
 </html>

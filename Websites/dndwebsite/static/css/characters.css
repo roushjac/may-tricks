@@ -20,6 +20,7 @@ header{
     text-align: center;
     font-family: 'Titillium Web';
     text-decoration: none;
+    margin-bottom: 20px;
 }
 
 .add_char a{
@@ -35,9 +36,38 @@ header{
     color: black;
 }
 
-.chars img{
-    height: auto;
-    width: auto;
-    max-height: 300px;
-    max-width: 300px;
+.char_img_wrap{
+    max-height: 30%;
+    max-width: 30%;
+    position: relative;
+}
+
+.char_img_wrap .char_img{
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 10px;
+    opacity: 1;
+    transition: opacity .2s;
+}
+
+.char_img_wrap .img_overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* This translates the element position by a % of itself */
+    visibility: hidden;
+    font-family: 'Noto Serif';
+    color: white;
+    font-size: 2em;
+    opacity: 0;
+    transition: opacity .2s, visibility .2s;
+}
+
+.char_img_wrap:hover .img_overlay{
+    visibility: visible;
+    opacity: 1;
+}
+
+.char_img_wrap:hover .char_img{
+    opacity: .5;
 }
