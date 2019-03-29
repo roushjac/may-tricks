@@ -21,12 +21,50 @@ def characters():
     all_characters = session.query(Characters).all()
     return render_template('characters.html', characters = all_characters)
 
+@app.route('/characters/<char_name>', methods = ['POST', 'GET'])
+def character_page(char_name):
+    session = sessionmaker(bind=engine)()
+    # filtering by name - maybe change to ID in future?
+    this_char = session.query(Characters).filter_by(name = char_name).one()
+    if request.method == 'GET':
+        return render_template('one_char.html', character = this_char)
+    if request.method == 'POST':
+        print(os.getcwd())
+        os.remove(os.path.join(os.getcwd(), url_for('static', filename=this_char.image_path)))
+        session.delete(this_char)
+        session.commit()
+        return redirect(url_for('characters'))
+
+@app.route('/characters/<char_name>/edit', methods=['POST', 'GET'])
+def edit_character(char_name):
+    session = sessionmaker(bind=engine)()
+    this_char = session.query(Characters).filter_by(name = char_name).one()
+    if request.method == 'POST':
+        this_char.char_class = request.form['new_class']
+        this_char.char_race = request.form['new_race']
+        this_char.level = request.form['new_level']
+        this_char.maxhp = request.form['new_hp']
+        this_char.strength = request.form['new_strength']
+        this_char.dexterity = request.form['new_dexterity']
+        this_char.constitution = request.form['new_constitution']
+        this_char.intelligence = request.form['new_intelligence']
+        this_char.wisdom = request.form['new_wisdom']
+        this_char.charisma = request.form['new_charisma']
+        session.commit()
+        return redirect(url_for('character_page', char_name = char_name))
+    if request.method == 'GET':
+        return render_template('edit_char.html', character = this_char)
+
+
+
+
 @app.route('/add_adventurer', methods = ['GET', 'POST'])
 def add_adventurer():
     if request.method == 'POST':
         file = request.files['char_photo']
         file_name = secure_filename(file.filename)
-        basedir = os.path.abspath(app.config['UPLOAD_FOLDER']) # returns abs path of the flask app for the system it's being run on
+        # return abs path of the flask app for the system it's being run on
+        basedir = os.path.abspath(app.config['UPLOAD_FOLDER'])
         abs_file_path = os.path.join(basedir, file_name)
         file.save(abs_file_path)
 
@@ -48,14 +86,7 @@ def add_adventurer():
         return redirect(url_for('characters'))
     else:
         return render_template('add_adventurer.html')
-
-@app.route('/test')
-def test():
-    return """
-    <img src='/static/character_pics/mambo_car.jpg'>
-    """
     
-
 
 
 if __name__ == '__main__':

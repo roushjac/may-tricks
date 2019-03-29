@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>{{character.name}}</title>
+    <script>
+    function clicked(e)
+        {
+        if(!confirm('Are you sure you want to permanently delete your character?'))e.preventDefault();
+        }
+    </script>
+</head>
+<body>
+    <header><h1>{{character.name}}</h1></header>
+    <section>
+        <p>Class: {{character.char_class}}</p>
+        <p>Race: {{character.char_race}}</p>
+        <p>Level: {{character.level}}</p>
+        <p>Max HP: {{character.maxhp}}</p>
+        <p>Strength: {{character.strength}}</p>
+        <p>Dexterity: {{character.dexterity}}</p>
+        <p>Constitution: {{character.constitution}}</p>
+        <p>Intelligence: {{character.intelligence}}</p>
+        <p>Wisdom: {{character.wisdom}}</p>
+        <p>Charisma: {{character.charisma}}</p>
+    </section>
+    <a href="{{ url_for('edit_character', char_name=character.name) }}">Edit Stats</a>
+    <br>
+    <form method='POST'>
+        <input type='submit' value='Delete character' onclick="clicked(event)">
+    </form>
+</body>
+
+</html>

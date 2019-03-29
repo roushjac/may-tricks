@@ -11,8 +11,8 @@
     </div>
         {% for character in characters %}
         <div class='char_img_wrap'>
-            <a href=#><img src="{{ url_for('static', filename=character.image_path) }}" class='char_img'></a>
-            <a href=#><p class='img_overlay'>{{character.name}}</p></a>
+            <a href="{{ url_for('character_page', char_name=character.name) }}"><img src="{{ url_for('static', filename=character.image_path) }}" class='char_img'></a>
+            <a href="{{ url_for('character_page', char_name=character.name) }}"><p class='img_overlay'>{{character.name}}</p></a>
         </div>
         {% endfor %}
 </body>
