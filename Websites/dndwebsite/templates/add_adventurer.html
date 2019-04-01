@@ -2,19 +2,49 @@
     <body>
         <form method="POST" enctype='multipart/form-data'>
             <p>
-                Character name: <input type='text' name='char_name'>
+                Character name: <input type='text' name='char_name' required>
             </p>
             <p>
-                Class: <input type='text' name='char_class'>
+                Race: <br>
+                <input type='radio' name='char_race' value='Dragonborn' required> Dragonborn <br>
+                <input type='radio' name='char_race' value='Dwarf'> Dwarf <br>
+                <input type='radio' name='char_race' value='Elf'> Elf <br>
+                <input type='radio' name='char_race' value='Gnome'> Gnome <br>
+                <input type='radio' name='char_race' value='Half-Elf'> Half-Elf <br>
+                <input type='radio' name='char_race' value='Half-Orc'> Half-Orc <br>
+                <input type='radio' name='char_race' value='Halfling'> Halfling <br>
+                <input type='radio' name='char_race' value='Human'> Human <br>
+                <input type='radio' name='char_race' value='Tiefling'> Tiefling <br>
             </p>
             <p>
-                Race: <input type='text' name='char_race'>
+                Class: <br>
+                <input type='radio' name='char_class' value='Barbarian' required> Barbarian <br>
+                <input type='radio' name='char_class' value='Bard'> Bard <br>
+                <input type='radio' name='char_class' value='Cleric'> Cleric <br>
+                <input type='radio' name='char_class' value='Druid'> Druid <br>
+                <input type='radio' name='char_class' value='Fighter'> Fighter <br>
+                <input type='radio' name='char_class' value='Monk'> Monk <br>
+                <input type='radio' name='char_class' value='Paladin'> Paladin <br>
+                <input type='radio' name='char_class' value='Ranger'> Ranger <br>
+                <input type='radio' name='char_class' value='Rogue'> Rogue <br>
+                <input type='radio' name='char_class' value='Sorcerer'> Sorcerer <br>
+                <input type='radio' name='char_class' value='Warlock'> Warlock <br>
+                <input type='radio' name='char_class' value='Wizard'> Wizard <br>
             </p>
             <p>
                 Level: <input type='text' name='char_level'>
             </p>
             <p>
                 Max hp: <input type='text' name='char_maxhp'>
+            </p>
+            <p>
+                Armor class: <input type='text' name='char_ac'>
+            </p>
+            <p>
+                Initiative: <input type='text' name='char_initiative'>
+            </p>
+            <p>
+                Speed: <input type='text' name='char_speed'>
             </p>
             <p>
                 Strength: <input type='text' name='char_strength'>

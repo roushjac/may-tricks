@@ -1,21 +1,46 @@
 <html>
 <head>
     <title>{{character.name}}</title>
+    <link rel='stylesheet' href={{ url_for('static', filename='css/edit_char.css') }}>
 </head>
 <body>
     <header><h1>{{character.name}}</h1></header>
     <form method='post'>
-            <p>Class: <input type='text' value={{character.char_class}} name='new_class'></p>
-            <p>Race: <input type='text' value={{character.char_race}} name='new_race'></p>
-            <p>Level: <input type='text' value={{character.level}} name='new_level'></p>
-            <p>Max HP: <input type='text' value={{character.maxhp}} name='new_hp'></p>
-            <p>Strength: <input type='text' value={{character.strength}} name='new_strength'></p>
-            <p>Dexterity: <input type='text' value={{character.dexterity}} name='new_dexterity'></p>
-            <p>Constitution: <input type='text' value={{character.constitution}} name='new_constitution'></p>
-            <p>Intelligence: <input type='text' value={{character.intelligence}} name='new_intelligence'></p>
-            <p>Wisdom: <input type='text' value={{character.wisdom}} name='new_wisdom'></p>
-            <p>Charisma: <input type='text' value={{character.charisma}} name='new_charisma'></p>
-            <input type='submit' value='Update stats'>
-        </form>
+        <table>
+            <tr>
+                <td>Level</td>
+                <td><input type='text' value={{character.level}} name='new_level'></td>
+            </tr>
+            <tr>
+                <td>Max HP</td>
+                <td><input type='text' value={{character.maxhp}} name='new_hp'></td>
+            </tr>
+            <tr>
+                <td>Strength</td>
+                <td><input type='text' value={{character.strength}} name='new_strength'></td>
+            </tr>
+            <tr>
+                <td>Dexterity</td>
+                <td><input type='text' value={{character.dexterity}} name='new_dexterity'></td>
+            </tr>
+            <tr>
+                <td>Constitution</td>
+                <td><input type='text' value={{character.constitution}} name='new_constitution'></td>
+            </tr>
+            <tr>
+                <td>Intelligence</td>
+                <td><input type='text' value={{character.intelligence}} name='new_intelligence'></td>
+            </tr>
+            <tr>
+                <td>Wisdom</td>
+                <td><input type='text' value={{character.wisdom}} name='new_wisdom'></td>
+            </tr>
+            <tr>
+                <td>Charisma</td>
+                <td><input type='text' value={{character.charisma}} name='new_charisma'></td>
+            </tr>
+        </table>
+        <input type='submit' value='Update stats'>
+    </form>
 </body>
 </html>

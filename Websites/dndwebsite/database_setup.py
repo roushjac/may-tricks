@@ -19,6 +19,9 @@ class Characters(Base):
     char_race = Column(String(15), nullable = False)
     level = Column(Integer, nullable = False)
     maxhp = Column(Integer, nullable = False)
+    armor_class = Column(Integer, nullable = False)
+    initiative = Column(Integer, nullable = False)
+    speed = Column(Integer, nullable = False)
 
     strength = Column(Integer, nullable = False)
     dexterity = Column(Integer, nullable = False)

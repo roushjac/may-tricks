@@ -47,6 +47,8 @@ header{
 .char_img_wrap .char_img{
     max-height: 100%;
     max-width: 100%;
+    height: auto;
+    width: auto;
     border-radius: 10px;
     opacity: 1;
     transition: opacity .2s;

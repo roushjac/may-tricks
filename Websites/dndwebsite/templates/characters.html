@@ -11,7 +11,11 @@
     </div>
         {% for character in characters %}
         <div class='char_img_wrap'>
-            <a href="{{ url_for('character_page', char_name=character.name) }}"><img src="{{ url_for('static', filename=character.image_path) }}" class='char_img'></a>
+            {% if character.image_path %} <!-- Evaluate to true if an image path exists -->
+                <a href="{{ url_for('character_page', char_name=character.name) }}"><img src="{{ url_for('static', filename='character_pics/'+character.image_path) }}" class='char_img'></a>
+            {% else %}
+                <a href="{{ url_for('character_page', char_name=character.name) }}"><img src="{{ url_for('static', filename='character_pics/default.jpg') }}" class='char_img'></a>
+            {% endif %}
             <a href="{{ url_for('character_page', char_name=character.name) }}"><p class='img_overlay'>{{character.name}}</p></a>
         </div>
         {% endfor %}
