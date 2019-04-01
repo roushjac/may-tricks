@@ -13,14 +13,13 @@ header{
     border-color: black;
     font-family: 'Germania One', cursive;
     font-size: 1.6em;
-    margin-bottom: 5px;
 }
 
 .add_char{
     text-align: center;
     font-family: 'Titillium Web';
     text-decoration: none;
-    margin-bottom: 20px;
+    margin: 15px auto;
 }
 
 .add_char a{
@@ -73,5 +72,5 @@ header{
 }
 
 .char_img_wrap:hover .char_img{
-    opacity: .5;
+    opacity: .3;
 }

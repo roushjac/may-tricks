@@ -5,6 +5,20 @@ from database_setup import Base, Characters, Equipment, Spells, Features
 from werkzeug.utils import secure_filename
 import os
 
+""" TODO
+- Modify CSS for all pages to make them responsive/mobile friendly
+    - Look into flexbox?
+- Add styling to:
+    - Character creation
+    - Character editing
+    - Character viewing
+- Add functionality to give characters features, spells, and equipment
+- Add login feature
+    - Will only have an admin account for now
+    - Give admin login info to IRL party members
+    - Admin can create/modify/delete any character
+"""
+
 app = Flask(__name__)
 # Only thing this website uploads is character pics so this is fine
 app.config['UPLOAD_FOLDER'] = 'static\\character_pics'
@@ -67,7 +81,7 @@ def add_adventurer():
             basedir = os.path.abspath(app.config['UPLOAD_FOLDER'])
             abs_file_path = os.path.join(basedir, file_name)
             file.save(abs_file_path)
-        else:
+        else: # filename will evaluate to false when checking if filepath is there in template
             file_name = ''
 
         session = sessionmaker(bind = engine)()
