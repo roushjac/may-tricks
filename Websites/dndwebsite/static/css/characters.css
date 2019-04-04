@@ -35,12 +35,16 @@ header{
     color: black;
 }
 
+.all_images {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
 .char_img_wrap{
-    max-height: 30%;
-    max-width: 30%;
+    flex-basis: 32%;
     position: relative;
-    float: left;
-    margin: 0 1%;
 }
 
 .char_img_wrap .char_img{
@@ -54,6 +58,8 @@ header{
 }
 
 .char_img_wrap .img_overlay{
+    margin: 0;
+    padding: 0;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -64,6 +70,7 @@ header{
     font-size: 2em;
     opacity: 0;
     transition: opacity .2s, visibility .2s;
+    text-align: center;
 }
 
 .char_img_wrap:hover .img_overlay{
@@ -73,4 +80,8 @@ header{
 
 .char_img_wrap:hover .char_img{
     opacity: .3;
+}
+
+.fill_final_line {
+
 }

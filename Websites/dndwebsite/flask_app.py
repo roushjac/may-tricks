@@ -7,11 +7,10 @@ import os
 
 """ TODO
 - Modify CSS for all pages to make them responsive/mobile friendly
-    - Look into flexbox?
 - Add styling to:
+    - Homepage - use flexboxes with the nav bar
     - Character creation
     - Character editing
-    - Character viewing
 - Add functionality to give characters features, spells, and equipment
 - Add login feature
     - Will only have an admin account for now

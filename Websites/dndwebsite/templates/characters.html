@@ -9,6 +9,7 @@
     <div class='add_char'>
         <a href='/add_adventurer'>Add a new adventurer</a>
     </div>
+    <div class='all_images'>
         {% for character in characters %}
         <div class='char_img_wrap'>
             {% if character.image_path %} <!-- Evaluate to true if an image path exists -->
@@ -16,8 +17,9 @@
             {% else %}
                 <a href="{{ url_for('character_page', char_name=character.name) }}"><img src="{{ url_for('static', filename='character_pics/default.jpg') }}" class='char_img'></a>
             {% endif %}
-            <a href="{{ url_for('character_page', char_name=character.name) }}"><p class='img_overlay'>{{character.name}}</p></a>
+                <a href="{{ url_for('character_page', char_name=character.name) }}"><p class='img_overlay'>{{character.name}}</p></a>
         </div>
         {% endfor %}
+    </div>
 </body>
 </html>
