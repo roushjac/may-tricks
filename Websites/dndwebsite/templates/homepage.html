@@ -11,25 +11,29 @@
     </header>
     <nav>
         <div class='dropdown'>
-            <button class='dropdown-button'>Session Summaries</button>
-            <div class='dropdown-content'>
-                <a href={{ url_for('static', filename='write_ups/Act1Ses1WriteUp.docx') }} download>Session 1</a>
-                <a href={{ url_for('static', filename='write_ups/Session 2 Write up.docx') }} download>Session 2</a>
-                <a href={{ url_for('static', filename='write_ups/Session 3 Write Up.pdf') }} download>Session 3</a>
-                <a href={{ url_for('static', filename='write_ups/Session 4 Write Up.pdf') }} download>Session 4/5</a>
-                <a href={{ url_for('static', filename='write_ups/Session 7 Write Up.pdf') }} download>Session 7</a>
-            </div>
+            <ul>
+                <li><button class='dropdown-button'>Session Summaries</button></li>
+                <li><div class='dropdown-content'>
+                    <a href={{ url_for('static', filename='write_ups/Act1Ses1WriteUp.docx') }} download>Session 1</a>
+                    <a href={{ url_for('static', filename='write_ups/Session 2 Write up.docx') }} download>Session 2</a>
+                    <a href={{ url_for('static', filename='write_ups/Session 3 Write Up.pdf') }} download>Session 3</a>
+                    <a href={{ url_for('static', filename='write_ups/Session 4 Write Up.pdf') }} download>Session 4/5</a>
+                    <a href={{ url_for('static', filename='write_ups/Session 7 Write Up.pdf') }} download>Session 7</a>
+                </div></li>
+            </ul>
         </div>
         <div class='dropdown'>
             <a href={{ url_for('characters') }} class='dropdown-button'>Characters</a>
         </div>
         <div class='dropdown'>
-            <button class='dropdown-button'>Campaign Documents</button>
-            <div class='dropdown-content'>
-                <a href={{ url_for('static', filename='docs/What to do on my turn.png') }} download>What can I do on my turn?</a>
-                <a href={{ url_for('static', filename='docs/Waterdeep_cropped.jpg') }} download>Waterdeep Map</a>
-                <a href={{ url_for('static', filename='docs/Luskan_map.jpg') }} download>Luskan Map</a>
-            </div>
+            <ul>
+                <li><button class='dropdown-button'>Campaign Documents</button></li>
+                <li><div class='dropdown-content'>
+                    <a href={{ url_for('static', filename='docs/What to do on my turn.png') }} download>What can I do on my turn?</a>
+                    <a href={{ url_for('static', filename='docs/Waterdeep_cropped.jpg') }} download>Waterdeep Map</a>
+                    <a href={{ url_for('static', filename='docs/Luskan_map.jpg') }} download>Luskan Map</a>
+                </div></li>
+            </ul>
         </div>
     </nav>
     <section>
