@@ -67,7 +67,7 @@ header{
     visibility: hidden;
     font-family: 'Noto Serif';
     color: white;
-    font-size: 2em;
+    font-size: 4vw;
     opacity: 0;
     transition: opacity .2s, visibility .2s;
     text-align: center;
@@ -80,8 +80,4 @@ header{
 
 .char_img_wrap:hover .char_img{
     opacity: .3;
-}
-
-.fill_final_line {
-
 }

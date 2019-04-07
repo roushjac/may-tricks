@@ -1,4 +1,8 @@
 <html>
+<head>
+    <title>Add a character</title>
+    <link rel='stylesheet' href={{ url_for('static', filename='css/add_adventurer.css') }}>
+</head>
     <body>
         <header><h1>Create New Character</h1></header>
         <form method="POST" enctype='multipart/form-data'>
@@ -69,11 +73,58 @@
             <p>
                 Character photo: <input type='file' name='char_photo' accept='image/*'>
             </p>
+            <h3>Equipment</h3>
+                <table>
+                    <tbody id='equip_table'>
+                        <tr>
+                            <th>Item</th>
+                            <th>Description</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td><input type='text' name='item_1'></td>
+                            <td><textarea name='item_1_desc'></textarea></td>
+                            <td><button type='button' onclick='deleteRow(event)'>Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type='button' id='add_equip_button'>Add another item</button>
+            <h3>Spells</h3>
+                <table>
+                    <tbody id='spells_table'>
+                        <tr>
+                            <th>Spell Name</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td><input type='text' name='spell_1'></td>
+                            <td><button type='button' onclick='deleteRow(event)'>Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type='button' id='add_spell_button'>Add another spell</button>
+            <h3>Features</h3>
+                <table>
+                    <tbody id='features_table'>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Description</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td><input type='text' name='feature_1'></td>
+                            <td><textarea name='feature_1_desc'></textarea></td>
+                            <td><button type='button' onclick='deleteRow(event)'>Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type='button' id='add_feature_button'>Add another feature</button>
+            <br>
             <input type='submit' value='Create character'>
-
         </form>
         <a href={{ url_for('homepage') }}> 
-            <input type='submit' value='Cancel'>
+            <button type='button'>Cancel</button>
         </a>
     </body>
+    <script src={{ url_for('static', filename='javascript/add_character_funcs.js') }}></script>
 </html>

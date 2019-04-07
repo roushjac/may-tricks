@@ -8,10 +8,8 @@ import os
 """ TODO
 - Modify CSS for all pages to make them responsive/mobile friendly
 - Add styling to:
-    - Homepage - use flexboxes with the nav bar
     - Character creation
     - Character editing
-- Add functionality to give characters features, spells, and equipment
 - Add login feature
     - Will only have an admin account for now
     - Give admin login info to IRL party members
@@ -99,6 +97,9 @@ def add_adventurer():
                                     wisdom = request.form['char_wisdom'],
                                     charisma = request.form['char_charisma'],
                                     image_path = file_name)
+        # TODO - find good way to parse the request.form dictionary to only get equipment items
+        # The number of equipment items is dynamic - can't hardcode like character stats
+        equipment_form = request.form.getlist()
         session.add(new_character)
         session.commit()
         return redirect(url_for('characters'))
