@@ -14,6 +14,7 @@ import os
     - Will only have an admin account for now
     - Give admin login info to IRL party members
     - Admin can create/modify/delete any character
+- Editing a description of an item, spell, or feature will not update it - fix
 """
 
 app = Flask(__name__)
