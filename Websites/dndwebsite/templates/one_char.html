@@ -60,6 +60,50 @@
                 <td>{{character.charisma}}</td>
         </tr>
     </table>
+    {% if all_equipment.first() != None %}
+    <h3>Equipment</h3>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Description</th>
+            </tr>
+    {% endif %}
+        {% for item in all_equipment %}
+            <tr>
+                    <td>{{item.name}}</td>
+                    <td>{{item.description}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% if all_spells.first() != None %}
+    <h3>Spells</h3>
+        <table>
+                <tr>
+                        <th>Spell</th>
+                </tr>
+    {% endif %}
+        {% for spell in all_spells %}
+                <tr>
+                        <td>{{spell.name}}</td>
+                </tr>
+        {% endfor %}
+        </table>
+    {% if all_features.first() != None %}
+    <h3>Features</h3>
+        <table>
+                <tr>
+                        <th>Feature</th>
+                        <th>Description</th>
+                </tr>
+    {% endif %}
+        {% for feature in all_features %}
+                <tr>
+                        <td>{{feature.name}}</td>
+                        <td>{{feature.description}}</td>
+                </tr>
+        {% endfor %}
+        </table>
+    <br>
     <a href="{{ url_for('edit_character', char_name=character.name) }}">Edit Stats</a>
     <br>
     <form method='POST'>

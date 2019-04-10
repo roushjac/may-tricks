@@ -6,6 +6,7 @@
 <body>
     <header><h1>{{character.name}}</h1></header>
     <form method='post'>
+        <h3>Stats</h3>
         <table>
             <tr>
                 <td>Level</td>
@@ -40,7 +41,64 @@
                 <td><input type='text' value={{character.charisma}} name='new_charisma'></td>
             </tr>
         </table>
-        <input type='submit' value='Update stats'>
+        <br>
+        <h3>Equipment</h3>
+            <table>
+                <tbody id='equip_table'>
+                    <tr>
+                        <th>Item</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                    {% for item in all_equipment %}
+                    <tr>
+                        <td><input type='text' name='item_name' value="{{item.name}}"></td>
+                        <td><textarea name='item_desc'>{{item.description}}</textarea></td>
+                        <td><button type='button' onclick='deleteRow(event)'>Delete</button></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type='button' id='add_equip_button'>Add another item</button>
+        <br>
+        <h3>Spells</h3>
+            <table>
+                <tbody id='spells_table'>
+                    <tr>
+                        <th>Spell Name</th>
+                        <th></th>
+                    </tr>
+                    {% for spell in all_spells %}
+                    <tr>
+                        <td><input type='text' name='spell_name' value="{{spell.name}}"></td>
+                        <td><button type='button' onclick='deleteRow(event)'>Delete</button></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type='button' id='add_spell_button'>Add another spell</button>
+        <br>
+        <h3>Features</h3>
+            <table>
+                <tbody id='features_table'>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                    {% for feature in all_features %}
+                    <tr>
+                        <td><input type='text' name='feature_name' value="{{feature.name}}"></td>
+                        <td><textarea name='feature_desc'>{{feature.description}}</textarea></td>
+                        <td><button type='button' onclick='deleteRow(event)'>Delete</button></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type='button' id='add_feature_button'>Add another feature</button>
+            <br>
+        <input type='submit' value='Update character'>
     </form>
+    <script src={{ url_for('static', filename='javascript/add_character_funcs.js') }}></script>
 </body>
 </html>
