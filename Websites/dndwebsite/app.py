@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Characters, Equipment, Spells, Features
 from werkzeug.utils import secure_filename
+from forms import LoginForm
 import os
 
 """ TODO
@@ -20,6 +21,7 @@ import os
 app = Flask(__name__)
 # Only thing this website uploads is character pics so this is fine
 app.config['UPLOAD_FOLDER'] = 'static\\character_pics'
+app.secret_key = b'J\xba\xd9\x8e\x0f\x9f\x99\xc9\x13\xc8\x80Ums*\x14'
 
 engine = create_engine('postgresql://roush:password@localhost/dnd')
 Base.metadata.bind = engine
@@ -27,6 +29,17 @@ Base.metadata.bind = engine
 @app.route('/') # Homepage
 def homepage():
     return render_template('homepage.html')
+
+@app.route('/login', methods = ['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        if form.username.data == 'admin' and form.password.data == 'password':
+            flash('Successfully logged in')
+            return redirect(url_for('homepage'))
+        else:
+            flash('Invalid login')
+    return render_template('login.html', form=form)
 
 @app.route('/characters')
 def characters():
@@ -135,6 +148,7 @@ def add_adventurer():
             file = request.files['char_photo']
             file_name = secure_filename(file.filename)
             # return abs path of the flask app for the system it's being run on
+            # could also use app.instance_path?
             basedir = os.path.abspath(app.config['UPLOAD_FOLDER'])
             abs_file_path = os.path.join(basedir, file_name)
             file.save(abs_file_path)

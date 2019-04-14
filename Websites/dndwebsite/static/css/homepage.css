@@ -14,6 +14,14 @@ header{
     padding: 1px;
     font-family: 'Germania One', cursive;
     font-size: 1.4em;
+    position: relative;
+}
+
+header a{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1%;
 }
 
 nav{
@@ -94,9 +102,12 @@ li {
     display: block;
 }
 
-section{
-    margin-top:50px;
-    border: 2px solid #222;
+section {
+    margin-top: 50px;
+    text-align: center;
+}
+
+section p{
     text-align: center;
     font-style: italic;
     border-radius: 8px;
