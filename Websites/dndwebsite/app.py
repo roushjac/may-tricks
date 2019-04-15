@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager, login_user, current_user, logout_user, login_required
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Characters, Equipment, Spells, Features
+from database_setup import Base, Characters, Equipment, Spells, Features, Users
 from werkzeug.utils import secure_filename
 from forms import LoginForm
 import os
@@ -23,8 +25,18 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static\\character_pics'
 app.secret_key = b'J\xba\xd9\x8e\x0f\x9f\x99\xc9\x13\xc8\x80Ums*\x14'
 
+bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
+
 engine = create_engine('postgresql://roush:password@localhost/dnd')
 Base.metadata.bind = engine
+
+# Setup login manager
+@login_manager.user_loader
+def load_user(user_id): # Needs to return a user object from ID
+    session = sessionmaker(bind=engine)()
+    return session.query(Users).filter_by(id = user_id).first()
 
 @app.route('/') # Homepage
 def homepage():
@@ -33,13 +45,23 @@ def homepage():
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
     form = LoginForm()
-    if form.validate_on_submit():
-        if form.username.data == 'admin' and form.password.data == 'password':
+    if form.validate_on_submit(): # This automatically checks if request.method = 'POST'
+        session = sessionmaker(bind=engine)()
+        user = session.query(Users).filter_by(username = form.username.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
             flash('Successfully logged in')
-            return redirect(url_for('homepage'))
+            login_user(user, remember=form.remember.data)
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('homepage'))
         else:
             flash('Invalid login')
     return render_template('login.html', form=form)
+
+@app.route('/logout')
+def logout():
+    flash('Successfully logged out')
+    logout_user()
+    return redirect(url_for('homepage'))
 
 @app.route('/characters')
 def characters():
@@ -61,13 +83,21 @@ def character_page(char_name):
                                                 all_spells = this_char_spells,
                                                 all_features = this_char_features)
     if request.method == 'POST':
-        if this_char.image_path:
-            os.remove(os.path.join(os.path.abspath(app.config['UPLOAD_FOLDER']), this_char.image_path))
-        session.delete(this_char)
-        session.commit()
-        return redirect(url_for('characters'))
+        if current_user.is_authenticated:
+            if this_char.image_path:
+                os.remove(os.path.join(os.path.abspath(app.config['UPLOAD_FOLDER']), this_char.image_path))
+            session.delete(this_char)
+            session.commit()
+            return redirect(url_for('characters'))
+        else:
+            flash('Must be logged in to delete a character')
+            return render_template('one_char.html', character = this_char,
+                                                all_equipment = this_char_equipment,
+                                                all_spells = this_char_spells,
+                                                all_features = this_char_features)
 
 @app.route('/characters/<char_name>/edit', methods=['POST', 'GET'])
+@login_required
 def edit_character(char_name):
     session = sessionmaker(bind=engine)()
     this_char = session.query(Characters).filter_by(name = char_name).one()
@@ -142,6 +172,7 @@ def edit_character(char_name):
 
 
 @app.route('/add_adventurer', methods = ['GET', 'POST'])
+@login_required
 def add_adventurer():
     if request.method == 'POST':
         if request.files['char_photo']: # evaluates to true if a file has been uploaded

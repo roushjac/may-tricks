@@ -4,13 +4,20 @@
     <script>
     function clicked(e)
         {
-        if(!confirm('Are you sure you want to permanently delete your character?'))e.preventDefault();
+        if(!confirm('Are you sure you want to permanently delete this character?'))e.preventDefault();
         }
     </script>
     <link rel='stylesheet' href={{ url_for('static', filename='css/one_char.css') }}>
 </head>
 <body>
     <header><h1>{{character.name}} the {{character.char_race}} {{character.char_class}}</h1></header>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <table>
         <tr>
             <th colspan=2>Stats</th>

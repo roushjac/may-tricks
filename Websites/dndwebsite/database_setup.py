@@ -2,6 +2,7 @@ from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
+from flask_login import UserMixin
 
 
 # Base class, which will derive other sqlalchemy classes
@@ -60,6 +61,14 @@ class Features(Base):
 
     character_id = Column(Integer, ForeignKey('characters.id'))
     characters = relationship(Characters)
+
+class Users(Base, UserMixin):
+    __tablename__ = 'users'
+
+    username = Column(String(20), nullable = False)
+    id = Column(Integer, primary_key = True)
+    password = Column(String(200), nullable = False)
+
 
 # Populate PostgresQL database with tables
 # DB was created outside this script using psql through bash
