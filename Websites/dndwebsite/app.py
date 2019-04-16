@@ -91,10 +91,7 @@ def character_page(char_name):
             return redirect(url_for('characters'))
         else:
             flash('Must be logged in to delete a character')
-            return render_template('one_char.html', character = this_char,
-                                                all_equipment = this_char_equipment,
-                                                all_spells = this_char_spells,
-                                                all_features = this_char_features)
+            return redirect(url_for('character_page', char_name = char_name))
 
 @app.route('/characters/<char_name>/edit', methods=['POST', 'GET'])
 @login_required
@@ -234,7 +231,6 @@ def add_adventurer():
     else:
         return render_template('add_adventurer.html')
     
-
 
 if __name__ == '__main__':
     app.debug = True
